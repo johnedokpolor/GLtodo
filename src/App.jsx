@@ -3,12 +3,7 @@ import Item from './Item';
 import Swal from 'sweetalert2'
 import './style.css';
 
-
-
 function App() {
-  
- 
-
 const [todos, setTodos] = React.useState(() => {
   if(localStorage.getItem("todos")) {
     return JSON.parse(localStorage.getItem("todos"))
@@ -22,7 +17,7 @@ const [newItem, setNewItem] = React.useState("")
 React.useEffect(() => {
   if(localStorage.getItem("todos") === null) {
     Swal.fire({
-      title:`Welcome to GLtodo App🗒️`,
+      title:`Welcome to GLto-do App🗒️`,
       text: "Never Forget Anything Again📝",
       icon: "success",
       timer: 2000,
@@ -32,7 +27,7 @@ React.useEffect(() => {
   }
   else {
     Swal.fire({
-      title:`Welcome Back to GLtodo App🗒️`,
+      title:`Welcome Back to GLto-do App🗒️`,
       text: "Continue Writing Your Todos📝",
       icon: "success",
       timer: 2000,
@@ -124,7 +119,7 @@ function ticktask(id,event) {
   return (
     <div className="container">
         <div className="todo-app">
-        <h2>GLtodo App</h2>
+        <h2>GLto-do App</h2>
             <div className="row">
                 <input type="text" id="input-box" placeholder="I Want Todo..." value={newItem} onChange={e => setNewItem(e.target.value)}/>
                 <button onClick={addtask}>Add</button>
