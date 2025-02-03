@@ -2,7 +2,6 @@
   font-family: Poppins;
   src: url(./Poppins-Regular.ttf);
 }
-
 * {
   margin: 0;
   padding: 0;
@@ -79,6 +78,11 @@ ul li.checked {
 ul li.checked::before {
   background-image: url(./circle.png);
 
+}
+.edit {
+  display: inline;
+  position: absolute;
+  right: 50px;
 }
 ul li span {
   position: absolute;
