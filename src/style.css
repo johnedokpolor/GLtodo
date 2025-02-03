@@ -34,6 +34,7 @@
   margin-bottom: 25px;
   border-radius: 25px;
   background-color: #edeef0;
+  position:relative;
 }
 .row  input {
   flex:1;
@@ -102,10 +103,22 @@ ul li span:hover {
 
 @media (max-width:400px) {
   .todo-app {
-    width: 90%;
+    width: 95%;
+  }
+  .row{
+    padding-left:0;
+    padding:10px;
+    border-radius:15px
   }
   .row button {
-    padding: 16px 20px;
+    padding: 16px 15px;
+    position: absolute;
+    right:0
+  }
+  .row input {
+    flex:0;
+    text-indent:10px;
+    width:200px
   }
 }
 @media (max-width:380px) {

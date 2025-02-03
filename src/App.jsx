@@ -1,42 +1,47 @@
-import React from "react";
-import Item from "./Item";
-import Swal from "sweetalert2";
-import "./style.css";
+import React from 'react';
+import Item from './Item';
+import Swal from 'sweetalert2'
+import './style.css';
+
+
 
 function App() {
-  const [todos, setTodos] = React.useState(() => {
-    if (localStorage.getItem("todos")) {
-      return JSON.parse(localStorage.getItem("todos"));
-    } else {
-      return [];
-    }
-  });
-  const [newItem, setNewItem] = React.useState("");
-  const [isEdit, setIsEdit] = React.useState(false);
-  const [editingItem, setEditingItem] = React.useState("");
-  const [editingId, setEditingId] = React.useState("");
+  
+ 
 
-  React.useEffect(() => {
-    if (localStorage.getItem("todos") === null) {
-      Swal.fire({
-        title: `Welcome to GLtodo App🗒️`,
-        text: "Never Forget Anything Again📝",
-        icon: "success",
-        timer: 500,
-        showConfirmButton: false,
-        timerProgressBar: true,
-      });
-    } else {
-      Swal.fire({
-        title: `Welcome Back to GLtodo App🗒️`,
-        text: "Continue Writing Your Todos📝",
-        icon: "success",
-        timer: 500,
-        showConfirmButton: false,
-        timerProgressBar: true,
-      });
-    }
-  }, [0]);
+const [todos, setTodos] = React.useState(() => {
+  if(localStorage.getItem("todos")) {
+    return JSON.parse(localStorage.getItem("todos"))
+  }
+  else {
+    return []
+  }
+})
+const [newItem, setNewItem] = React.useState("")
+
+React.useEffect(() => {
+  if(localStorage.getItem("todos") === null) {
+    Swal.fire({
+      title:`Welcome to GLtodo App🗒️`,
+      text: "Never Forget Anything Again📝",
+      icon: "success",
+      timer: 2000,
+      showConfirmButton:false,
+      timerProgressBar: true
+      })
+  }
+  else {
+    Swal.fire({
+      title:`Welcome Back to GLtodo App🗒️`,
+      text: "Continue Writing Your Todos📝",
+      icon: "success",
+      timer: 2000,
+      showConfirmButton:false,
+      timerProgressBar: true
+      })
+  }
+ 
+},[0])
 
   React.useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -128,37 +133,26 @@ function App() {
 
   return (
     <div className="container">
-      <div className="todo-app">
+        <div className="todo-app">
         <h2>GLtodo App</h2>
-        <div className="row">
-          {!isEdit && (
-            <input
-              type="text"
-              id="input-box"
-              placeholder="I Want Todo..."
-              value={newItem}
-              onChange={(e) => setNewItem(e.target.value)}
-            />
-          )}
-
-          <button onClick={addtask}>Add</button>
+            <div className="row">
+                <input type="text" id="input-box" placeholder="I Want Todo..." value={newItem} onChange={e => setNewItem(e.target.value)}/>
+                <button onClick={addtask}>Add</button>
+            </div>
+            <ul className="list-container" onClick={ticktask}>
+              {todos.map(todo => {
+                return (
+                  <Item 
+                 { ...todo}
+                  key = {todo.id}
+                  ticktask = {(event) => {ticktask(todo.id,event)}}
+                  
+                /> 
+                )
+              })}
+                
+            </ul>
         </div>
-        <ul className="list-container" onClick={ticktask}>
-          {todos.map((todo) => {
-            return (
-              <Item
-                {...todo}
-                key={todo.id}
-                ticktask={(event) => {
-                  ticktask(todo.id, event);
-                }}
-                showEdit={() => showEdit(todo.id)}
-                editTask={editTask}
-              />
-            );
-          })}
-        </ul>
-      </div>
     </div>
   );
 }
