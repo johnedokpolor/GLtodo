@@ -27,17 +27,17 @@
   margin-bottom: 20px;
 }
 .row {
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   padding-left: 20px;
   margin-bottom: 25px;
   border-radius: 25px;
   background-color: #edeef0;
-  position:relative;
+  position: relative;
 }
-.row  input {
-  flex:1;
+.row input {
+  flex: 1;
   border: 0;
   outline: 0;
   padding: 10px;
@@ -55,14 +55,14 @@
 }
 ul li {
   list-style: none;
-  font-size:17px;
+  font-size: 17px;
   padding: 12px 8px 12px 50px;
   user-select: none;
   cursor: pointer;
   position: relative;
 }
 ul li::before {
-  content: '';
+  content: "";
   height: 25px;
   width: 25px;
   position: absolute;
@@ -78,12 +78,15 @@ ul li.checked {
 }
 ul li.checked::before {
   background-image: url(./circle.png);
-
 }
 .edit {
   display: inline;
   position: absolute;
   right: 50px;
+}
+.edit:hover {
+  background: #edeef0;
+  border-radius: 50%;
 }
 ul li span {
   position: absolute;
@@ -92,7 +95,7 @@ ul li span {
   width: 40px;
   line-height: 40px;
   text-align: center;
-  color:#555;
+  color: #555;
   height: 40px;
   font-size: 15px;
 }
@@ -101,28 +104,28 @@ ul li span:hover {
   border-radius: 50%;
 }
 
-@media (max-width:400px) {
+@media (max-width: 400px) {
   .todo-app {
     width: 95%;
   }
-  .row{
-    padding-left:0;
-    padding:10px;
-    border-radius:15px
+  .row {
+    padding-left: 0;
+    padding: 10px;
+    border-radius: 15px;
   }
   .row button {
     padding: 16px 15px;
     position: absolute;
-    right:0
+    right: 0;
   }
   .row input {
-    flex:0;
-    text-indent:10px;
-    width:200px
+    flex: 0;
+    text-indent: 10px;
+    width: 200px;
   }
 }
-@media (max-width:380px) {
- .todo-app {
-  padding: 40px 20px 70px;
- }
+@media (max-width: 380px) {
+  .todo-app {
+    padding: 40px 20px 70px;
+  }
 }
