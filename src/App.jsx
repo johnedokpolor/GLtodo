@@ -146,7 +146,8 @@ React.useEffect(() => {
                  { ...todo}
                   key = {todo.id}
                   ticktask = {(event) => {ticktask(todo.id,event)}}
-                  
+                  editTask={editTask}
+                  showEdit={()=> showEdit(todo.id)}
                 /> 
                 )
               })}

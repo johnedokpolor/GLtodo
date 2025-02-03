@@ -1,11 +1,8 @@
 import { useState } from "react";
 
 function Item(props) {
+  const [value, setValue] = useState(props.task);
 
-    const [value, setValue] = useState(props.task)
-
-
-  
   return (
     <div>
       {props.isEdit ? (
@@ -14,11 +11,11 @@ function Item(props) {
             type="text"
             id="input-box"
             placeholder="I Want Todo..."
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
           />
 
-          <button onClick={()=> props.editTask(value, props.id)}>Edit</button>
+          <button onClick={() => props.editTask(value, props.id)}>Edit</button>
         </div>
       ) : (
         <li
@@ -26,7 +23,7 @@ function Item(props) {
           onClick={props.ticktask}
         >
           {props.task}
-          <span>x</span>{" "}
+          <span>🗑️</span>{" "}
           <p onClick={props.showEdit} className="edit">
             📝
           </p>
